@@ -1,4 +1,5 @@
 import express from 'express';
+const helmet = require('helmet');
 import morgan from 'morgan';
 import cors from 'cors';
 import routes from './routes';
@@ -9,6 +10,8 @@ import specs from './documentation/swagger.config';
 
 
 const app = express()
+
+app.use(helmet());
 
 app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));

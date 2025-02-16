@@ -3,6 +3,7 @@ import { addUser, eliminaUsuario, login, updateAfiliado, usuarioById } from '../
 import { validaUsuario } from '../middlewares/valida_usuario.middleware';
 import { actualizaUsuario } from '../middlewares/actualiza_usuario.middleware';
 import { verificarToken } from '../middlewares/verifica_token.middleware';
+import { loginLimiter } from '../middlewares/limitaSesiones';
 
 const router = express.Router()
 
@@ -156,7 +157,7 @@ router.post('/', validaUsuario, addUser)
  *                   type: string
  *                   example: "Algo salio mal, contacte al administrador"
  */
-router.post('/login', login);
+router.post('/login', loginLimiter, login);
 
 /**
  * @swagger
