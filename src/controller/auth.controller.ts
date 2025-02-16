@@ -54,7 +54,8 @@ export const login = async(req: Request, res: Response) => {
     }
     
     const usuario = await Usuario.findOne({
-      where: {correo}
+      where: {correo},
+      relations:['sesiones']
     })
 
     if (usuario) {
