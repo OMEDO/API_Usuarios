@@ -35,7 +35,7 @@ export const addUser = async(req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       ok: false,
-      mensaje: "Algo salio mal, contacte al admininstrador"
+      mensaje: "Algo salio mal, contacte al administrador"
     })
   }
 }
@@ -49,6 +49,8 @@ export const login = async(req: Request, res: Response) => {
         ok:false,
         mensaje: `Usuario y contraseña son requeridos`
       })
+
+      return
     }
     
     const usuario = await Usuario.findOne({
@@ -62,6 +64,7 @@ export const login = async(req: Request, res: Response) => {
           ok:false,
           mensaje: `Credenciales incorrectas`
         })
+        return
       }
 
       const payload: jwtDataDTO = {
@@ -99,7 +102,7 @@ export const login = async(req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       ok: false,
-      mensaje: "Algo salio mal, contacte al admininstrador", error
+      mensaje: "Algo salio mal, contacte al administrador", error
     })
   }
 }
@@ -113,6 +116,7 @@ export const usuarioById = async(req: Request, res: Response) => {
         ok:false,
         mensaje: `El ID del usuario es requerido`
       })
+      return
     }
   
     const usuario = await Usuario.findOne({
@@ -139,7 +143,7 @@ export const usuarioById = async(req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       ok: false,
-      mensaje: "Algo salio mal, contacte al admininstrador"
+      mensaje: "Algo salio mal, contacte al administrador"
     })
   }
 }
@@ -167,20 +171,17 @@ export const updateAfiliado = async(req: Request, res: Response) => {
         ok:true,
         mensaje: `Usuario actualizado correctamente`
       })
-
-
-
     } else {
       res.status(404).json({
         ok: false,
-        mensaje: 'No se encontro un usuario con el ID especificado',
+        mensaje: 'No se encontró un usuario con el ID especificado',
       });
     }
     
   } catch (error) {
     res.status(500).json({
       ok: false,
-      mensaje: "Algo salio mal, contacte al admininstrador"
+      mensaje: "Algo salio mal, contacte al administrador"
     })
   }
 }
@@ -195,6 +196,7 @@ export const eliminaUsuario = async(req: Request, res: Response) => {
         ok:false,
         mensaje: `El ID del usuario es requerido`
       })
+      return;
     }
 
     const usuario = await Usuario.findOne({
@@ -211,18 +213,18 @@ export const eliminaUsuario = async(req: Request, res: Response) => {
         ok:true,
         mensaje: `El usuario y sus sesiones se eliminaron correctamente`
       })
-
     } else {
       res.status(404).json({
         ok: false,
         mensaje: 'No se encontro un usuario con el ID especificado',
       });
+      return
     }
     
   } catch (error) {
     res.status(500).json({
       ok: false,
-      mensaje: "Algo salio mal, contacte al admininstrador"
+      mensaje: "Algo salio mal, contacte al administrador"
     })
   }
 }
