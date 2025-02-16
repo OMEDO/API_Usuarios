@@ -26,7 +26,7 @@ npm install
 
 ## Generar Imagen de la BD
 ```bash
-docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Pru3b@T3cn1c@N0d3"-p 1433:1433 --name mi_sqlserver -v sqlserver_data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:latest
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Pru3b@T3cn1c@N0d3" -p 1433:1433 --name mi_sqlserver -v sqlserver_data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:latest
 ```
 
 Crear Base de datos principal en un Gestor
