@@ -31,7 +31,7 @@ const router = express.Router()
  *                 example: "Mendoza"
  *               telefono:
  *                  type: string
- *                  example: "925555555"
+ *                  example: "9255555555"
  *               correo:
  *                 type: string
  *                 format: email
